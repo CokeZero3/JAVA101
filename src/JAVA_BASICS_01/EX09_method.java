@@ -1,5 +1,5 @@
 package JAVA_BASICS_01;
 
-public class Ex09 {
+public class EX09_method {
 
 }

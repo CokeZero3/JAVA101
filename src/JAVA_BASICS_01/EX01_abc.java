@@ -1,6 +1,6 @@
 package JAVA_BASICS_01;
 //숫자와 문자
-public class EX01_ABC {
+public class EX01_abc {
 	public static void main(String[] args) {
 		//"" 따옴표 없는 숫자는 숫자로 인식한다.
 		System.out.println(1+2);
