@@ -23,14 +23,29 @@ package JAVA_BASICS_01;
 	        System.out.println(this.left - this.right);
 	    }
 	}
+	class MultiplicationableCalculator extends Calculator {
+	    public void multiplication() {
+	        System.out.println(this.left * this.right);
+	    }
+	}
+	class DivisionableCalculator extends MultiplicationableCalculator {
+	    public void division() {
+	        System.out.println(this.left / this.right);
+	    }
+	}
 public class EX12_inheritance {
 	public static void main(String[] args) {
 
-		SubstractionableCalculator c1 = new SubstractionableCalculator();
+//		SubstractionableCalculator c1 = new SubstractionableCalculator();
+//		MultiplicationableCalculator c1 = new MultiplicationableCalculator();
+		DivisionableCalculator c1 = new DivisionableCalculator();
         c1.setOprands(10, 20);
         c1.sum();
         c1.avg();
-        c1.substract();
+//	      c1.substract();
+//        c1.multiplication();
+        c1.division();
+        
 
 	}
 
