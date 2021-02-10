@@ -14,7 +14,7 @@ public class EX02_oracleDB_insert {
 		String driver ="oracle.jdbc.driver.OracleDriver";
 		
 		Connection con=null; //DB연결 
-		PreparedStatement pstmt=null; //SQL변환 
+//		PreparedStatement pstmt=null; //SQL변환 
 		ResultSet rs=null;
 
 		try{ 
@@ -25,6 +25,15 @@ public class EX02_oracleDB_insert {
 			con= DriverManager.getConnection(url, user, password); 
 			System.out.println("~오라클DB서버 연결 성공~"); 
 			
+			//3) 실행할 쿼리 정의
+			String sql = "insert into person"
+					+ "(idx, lastname, firstname)"
+					+ "values"
+					+ "(idx_tmp_seq.NEXTVAL, ?, ?)";
+			
+			//4) 쿼리를 데이터 베이스로 전송하는 PreparedStatement 객체 획득하기
+			PreparedStatement pstmt = connection.prepareStatement(sql);
+					
 			}catch(Exception e){ 
 				System.out.println("!실패!" + e); 
 			

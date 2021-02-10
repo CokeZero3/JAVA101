@@ -26,7 +26,7 @@ public class EX01_oracleDB_connection {
 			System.out.println("~오라클DB서버 연결 성공~"); 
 			
 			//3) SQL문 작성 
-			StringBuilder sql=new StringBuilder(); 
+			StringBuilder sql = new StringBuilder(); 
 			String uname="박지성"; 
 			
 			int kor=50, eng=60, mat=65; 
