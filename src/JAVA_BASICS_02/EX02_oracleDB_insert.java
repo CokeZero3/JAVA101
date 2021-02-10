@@ -14,7 +14,7 @@ public class EX02_oracleDB_insert {
 		String driver ="oracle.jdbc.driver.OracleDriver";
 		
 		Connection con=null; //DB연결 
-//		PreparedStatement pstmt=null; //SQL변환 
+		PreparedStatement pstmt=null; //SQL변환 
 		ResultSet rs=null;
 
 		try{ 
@@ -32,7 +32,7 @@ public class EX02_oracleDB_insert {
 					+ "(idx_tmp_seq.NEXTVAL, ?, ?)";
 			
 			//4) 쿼리를 데이터 베이스로 전송하는 PreparedStatement 객체 획득하기
-			PreparedStatement pstmt = connection.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 					
 			}catch(Exception e){ 
 				System.out.println("!실패!" + e); 
@@ -42,7 +42,7 @@ public class EX02_oracleDB_insert {
 					if(rs!=null){rs.close();}
 				}catch(Exception e){} 
 				try{ 
-					if(pstmt!=null){pstmt.close();} 
+					if(pstmt != null){pstmt.close();} 
 				}catch(Exception e){} 
 				try{ 
 					if(con!=null){con.close();} 

@@ -4,18 +4,20 @@ import java.sql.*;
 
 public class EX03_oracleDB_select  {
     public static void main(String[] args) {
+    	
     	String driver = "oracle.jdbc.driver.OracleDriver";
     	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
     	String user = "c##cokezero" ;
     	String password ="1234";
   	
-		Connection conn = null; //DB연결 
+    	String SQL = "SELECT firstname, lastname from member";
+
+    	Connection conn = null; //DB연결 
 		PreparedStatement pstmt = null; //매개 변수를 이용한 SQL문장
 		ResultSet rs = null; // SELECT 결과 저장 Result Set 변수
-    	Statement stmt = null; // 테이블 생성 SQL문장
-    	Statement stmt2 = null; // SELECT 문
     	
-    	String SQL = "SELECT * from member";
+		//받아올 객체
+		String firstName = "";
     	
     	// SQL 관련 메소드 사용시 SQLException 예외를 처리해야 함
         try {
@@ -25,13 +27,15 @@ public class EX03_oracleDB_select  {
         	conn= DriverManager.getConnection(url, user, password); 
 			System.out.println("~오라클DB서버 연결 성공~"); 
         	
-			//3) SQL문
-			
+			//3) SQL
 			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, SQL);
+			pstmt.executeUpdate();
+		
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				
+				firstName = rs.getString("firstname");
 			}
 			
 			
@@ -45,9 +49,7 @@ public class EX03_oracleDB_select  {
             try {
                 // 메모리 해제
                 rs.close();
-                stmt2.close();
                 pstmt.close();
-                stmt.close();
                 conn.close();
 
             } catch (SQLException e) {
